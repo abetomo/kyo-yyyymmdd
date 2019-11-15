@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [
+      "esnext"
+    ],
+    "types": [
+      "@types/node",
+      "@types/jest"
+    ],
+    "sourceMap": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "dist"
+  },
+  "include": [
+    "src/*.ts"
+  ]
+}
