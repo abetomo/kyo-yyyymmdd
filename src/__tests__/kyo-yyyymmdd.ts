@@ -18,6 +18,10 @@ describe('KyoYYYYMMDD', () => {
     expect(converter.today()).toEqual(new Date(1983, 3, 8, 0, 0, 0, 0))
   })
 
+  test('calculateBasedOnToday()', () => {
+    expect(converter.calculateBasedOnToday(10)).toEqual(new Date(1983, 3, 18, 0, 0, 0, 0))
+  })
+
   test('yesterday()', () => {
     expect(converter.yesterday()).toEqual(new Date(1983, 3, 7, 0, 0, 0, 0))
   })
@@ -27,6 +31,10 @@ describe('KyoYYYYMMDD', () => {
     expect(converter.yesterday()).toEqual(new Date(1983, 2, 31, 0, 0, 0, 0))
   })
 
+  test('dayBeforeYesterday()', () => {
+    expect(converter.dayBeforeYesterday()).toEqual(new Date(1983, 3, 6, 0, 0, 0, 0))
+  })
+
   test('tomorrow()', () => {
     expect(converter.tomorrow()).toEqual(new Date(1983, 3, 9, 0, 0, 0, 0))
   })
@@ -34,6 +42,10 @@ describe('KyoYYYYMMDD', () => {
   test('tomorrow(end of month)', () => {
     converter.now = () => new Date(1983, 3, 30, 9, 10, 11, 12)
     expect(converter.tomorrow()).toEqual(new Date(1983, 4, 1, 0, 0, 0, 0))
+  })
+
+  test('dayAfterTomorrow()', () => {
+    expect(converter.dayAfterTomorrow()).toEqual(new Date(1983, 3, 10, 0, 0, 0, 0))
   })
 
   test('lastYear()', () => {
@@ -60,8 +72,16 @@ describe('KyoYYYYMMDD', () => {
       expect(converter.date('昨日')).toEqual(new Date(1983, 3, 7, 0, 0, 0, 0))
     })
 
+    test('一昨日', () => {
+      expect(converter.date('一昨日')).toEqual(new Date(1983, 3, 6, 0, 0, 0, 0))
+    })
+
     test('明日', () => {
       expect(converter.date('明日')).toEqual(new Date(1983, 3, 9, 0, 0, 0, 0))
+    })
+
+    test('明後日', () => {
+      expect(converter.date('明後日')).toEqual(new Date(1983, 3, 10, 0, 0, 0, 0))
     })
 
     test('今年', () => {
@@ -98,8 +118,16 @@ describe('KyoYYYYMMDD', () => {
       expect(converter.convert('昨日')).toEqual('1983年4月7日')
     })
 
+    test('一昨日', () => {
+      expect(converter.convert('一昨日')).toEqual('1983年4月6日')
+    })
+
     test('明日', () => {
       expect(converter.convert('明日')).toEqual('1983年4月9日')
+    })
+
+    test('明後日', () => {
+      expect(converter.convert('明後日')).toEqual('1983年4月10日')
     })
 
     test('今年', () => {

@@ -5,8 +5,12 @@ export class KyoYYYYMMDD {
         return this.today()
       case dateString === '昨日':
         return this.yesterday()
+      case dateString === '一昨日':
+        return this.dayBeforeYesterday()
       case dateString === '明日':
         return this.tomorrow()
+      case dateString === '明後日':
+        return this.dayAfterTomorrow()
 
       case ['去年', '昨年'].includes(dateString):
         return this.lastYear()
@@ -18,7 +22,7 @@ export class KyoYYYYMMDD {
 
   convert (dateString: string): string {
     switch (true) {
-      case ['今日', '昨日', '明日'].includes(dateString): {
+      case ['今日', '昨日', '一昨日', '明日', '明後日'].includes(dateString): {
         const date = this.date(dateString)
         return this.年月日(date)
       }
@@ -49,16 +53,26 @@ export class KyoYYYYMMDD {
     return date
   }
 
-  yesterday (): Date {
+  calculateBasedOnToday (n: number): Date {
     const date = this.today()
-    date.setDate(date.getDate() - 1)
+    date.setDate(date.getDate() + n)
     return date
   }
 
+  yesterday (): Date {
+    return this.calculateBasedOnToday(-1)
+  }
+
+  dayBeforeYesterday (): Date {
+    return this.calculateBasedOnToday(-2)
+  }
+
   tomorrow (): Date {
-    const date = this.today()
-    date.setDate(date.getDate() + 1)
-    return date
+    return this.calculateBasedOnToday(1)
+  }
+
+  dayAfterTomorrow (): Date {
+    return this.calculateBasedOnToday(2)
   }
 
   lastYear (): Date {
