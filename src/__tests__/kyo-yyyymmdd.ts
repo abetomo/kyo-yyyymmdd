@@ -99,7 +99,6 @@ describe('KyoYYYYMMDD', () => {
     test('来年', () => {
       expect(converter.date('来年')).toEqual(new Date(1984, 3, 8, 0, 0, 0, 0))
     })
-
   })
 
   describe('convert()', () => {
