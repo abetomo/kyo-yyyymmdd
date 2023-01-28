@@ -2,9 +2,16 @@
   "name": "kyo-yyyymmdd",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "dist/kyo-yyyymmdd.js",
+  "types": "dist/kyo-yyyymmdd.d.ts",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "dist",
+    "package.json"
+  ],
   "scripts": {
-    "build": "tsc",
+    "build": "tsc --declaration",
     "lint": "ts-standard ./src//kyo-yyyymmdd.ts ./src/__tests__/kyo-yyyymmdd.ts",
     "test": "npm run lint && npm run test-typings && npm run unit",
     "test-typings": "tsc --noEmit",
