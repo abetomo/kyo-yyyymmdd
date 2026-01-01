@@ -61,7 +61,7 @@ describe('KyoYYYYMMDD', () => {
       expect(() => {
         converter.date('hoge')
       })
-        .toThrowError('"hoge" could not be converted.')
+        .toThrow('"hoge" could not be converted.')
     })
 
     test('今日', () => {
@@ -106,7 +106,7 @@ describe('KyoYYYYMMDD', () => {
       expect(() => {
         converter.convert('hoge')
       })
-        .toThrowError('"hoge" could not be converted.')
+        .toThrow('"hoge" could not be converted.')
     })
 
     test('今日', () => {
